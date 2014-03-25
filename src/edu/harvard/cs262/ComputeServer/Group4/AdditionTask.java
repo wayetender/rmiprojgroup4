@@ -4,11 +4,26 @@ import java.io.Serializable;
 
 import edu.harvard.cs262.ComputeServer.WorkTask;
 
+/**
+ * An AdditionTask is a simple task that adds two integers. To simulate a
+ * computation-intensive task, it will sleep for 2 seconds.
+ * 
+ * @author Group 4: Lucas Waye, Christopher Mueller, George Wu, Kat Zhou
+ * 
+ */
 public class AdditionTask implements WorkTask, Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private final Integer a, b;
-	
+
+	/**
+	 * Constructor
+	 * 
+	 * @param a
+	 *            first number to add
+	 * @param b
+	 *            second number to add
+	 */
 	public AdditionTask(Integer a, Integer b) {
 		this.a = a;
 		this.b = b;
@@ -23,7 +38,5 @@ public class AdditionTask implements WorkTask, Serializable {
 		}
 		return a + b;
 	}
-	
-	
-	
+
 }
