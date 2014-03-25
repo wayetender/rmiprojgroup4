@@ -27,14 +27,15 @@ public class WorkClient {
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());
         }
-        if (args.length < 1) {
-            System.err.println("Usage: WorkClient [ComputeServerHostname]");
+        if (args.length < 2) {
+            System.err.println("Usage: WorkClient [ComputeServerHostname] [ComputeServerBindedName]");
         }
         String queueServerHost = args[0];
+        String workServerBindedName = args[1];
         ComputeServer qServer = null;
         try {
             Registry queueRegistry = LocateRegistry.getRegistry(queueServerHost);
-            qServer = (ComputeServer) queueRegistry.lookup("WorkerServer");
+            qServer = (ComputeServer) queueRegistry.lookup(workServerBindedName);
         } catch (Exception ex) {
             System.out.println("could not connect to Queue Server: " + queueServerHost);
             ex.printStackTrace();

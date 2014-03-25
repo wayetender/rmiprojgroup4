@@ -36,8 +36,8 @@ Usage
  3. Start the codebase webserver; it runs on port 8000: `./runwebserver.sh &`
  4. Start the RMI registry with the codebase server: `./runregistry.sh &` 
  5. Start the Queued compute server: `./runqueue.sh`
- 6. In a separate window, start a worker: `./runworker.sh localhost`. If registering to a remote Queue server, change `localhost` to the hostname of the remote Queue server. If the queued server name registry name is not "QueuedServer", you must edit the "runworker.sh" script.
- 7. In a separate window, start the client: `./runclient.sh localhost`. If connecting to a remote compute server, change `localhost` to the hostname of the remote server.
+ 6. In a separate window, start a worker: `./runworker.sh localhost`. If registering to a remote Queue server, change `localhost` to the hostname of the remote Queue server. If the queued server name binded registry name is not "QueuedServer", you must edit the "runworker.sh" script.
+ 7. In a separate window, start the client: `./runclient.sh localhost`. If connecting to a remote compute server, change `localhost` to the hostname of the remote server. If the compute server name binded registry name is not "MasterComptueServer", you must edit the "runclient.sh" script.
 
 
 **Note:** For the RMI codebases, don't forget the trailing slash if it is not a JAR.

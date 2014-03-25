@@ -26,7 +26,7 @@ import edu.harvard.cs262.ComputeServer.WorkTask;
  */
 public class WorkQueueServer implements WorkQueue, ComputeServer {
 
-    private static final String WORKER_SERVER_REGISTRY_NAME = "WorkerServer";
+    private static final String WORKER_SERVER_REGISTRY_NAME = "MasterComptueServer";
     private static final String QUEUED_SERVER_REGISTRY_NAME = "QueuedServer";
     private Hashtable<UUID, ComputeServer> workers;
     private LinkedList<UUID> freeWorkers, busyWorkers;
@@ -46,6 +46,7 @@ public class WorkQueueServer implements WorkQueue, ComputeServer {
         workers.put(key, server);
         freeWorkers.add(key);
         notify();
+        System.out.println("worker " + key + " registered");
         return key;
     }
 
