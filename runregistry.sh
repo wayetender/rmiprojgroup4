@@ -1,3 +1,3 @@
 #!/bin/sh
 
-rmiregistry -J-Djava.rmi.server.codebase=`cat rmicodebases`
+rmiregistry -J-Djava.rmi.server.codebase="`cat rmicodebases`"
