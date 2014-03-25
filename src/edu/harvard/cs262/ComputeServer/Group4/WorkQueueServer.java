@@ -26,6 +26,8 @@ import edu.harvard.cs262.ComputeServer.WorkTask;
  */
 public class WorkQueueServer implements WorkQueue, ComputeServer {
 
+    private static final String WORKER_SERVER_REGISTRY_NAME = "WorkerServer";
+    private static final String QUEUED_SERVER_REGISTRY_NAME = "QueuedServer";
     private Hashtable<UUID, ComputeServer> workers;
     private LinkedList<UUID> freeWorkers, busyWorkers;
 
@@ -148,8 +150,8 @@ public class WorkQueueServer implements WorkQueue, ComputeServer {
         WorkQueueServer server = new WorkQueueServer();
         Registry registry = LocateRegistry.getRegistry();
         Remote stub = UnicastRemoteObject.exportObject(server, 0);
-        registry.bind("WorkerServer", stub);
-        registry.bind("QueuedServer", stub);
+        registry.bind(WORKER_SERVER_REGISTRY_NAME, stub);
+        registry.bind(QUEUED_SERVER_REGISTRY_NAME, stub);
         return server;
     }
 
@@ -167,7 +169,7 @@ public class WorkQueueServer implements WorkQueue, ComputeServer {
             createWorkerServer();
             System.out.println("WorkQueueServer ready");
         } catch (Exception e) {
-            System.err.println("Server exception: " + e.toString());
+            System.err.println("Server exception");
             e.printStackTrace();
         }
     }

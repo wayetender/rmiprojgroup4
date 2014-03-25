@@ -50,20 +50,21 @@ public class WorkerServer implements ComputeServer {
      * QueueServer and waits for tasks to run.
      * 
      * @param args
-     *            expects the QueueServer hostname
+     *            expects the QueueServer hostname and the registry's binded name
      */
     public static void main(String args[]) {
         try {
             if (System.getSecurityManager() == null) {
                 System.setSecurityManager(new SecurityManager());
             }
-            if (args.length < 1) {
-                System.err.println("Usage: WorkerServer [QueueServerHostname]");
+            if (args.length < 2) {
+                System.err.println("Usage: WorkerServer [QueueServerHostname] [QueueServerBindedName]");
             }
             String queueServerHost = args[0];
+            String bindedName = args[1];
             ComputeServer myServer = createWorkerServer();
             Registry queueRegistry = LocateRegistry.getRegistry(queueServerHost);
-            WorkQueue qServer = (WorkQueue) queueRegistry.lookup("QueuedServer");
+            WorkQueue qServer = (WorkQueue) queueRegistry.lookup(bindedName);
             qServer.registerWorker(myServer);
             System.out.println("WorkerServer ready");
         } catch (Exception e) {
