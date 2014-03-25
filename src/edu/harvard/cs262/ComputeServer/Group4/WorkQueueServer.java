@@ -118,6 +118,7 @@ public class WorkQueueServer implements WorkQueue, ComputeServer {
 			throws RemoteException {
 		ComputeServer server = workers.get(worker);
 		try {
+			System.out.println("delegating task " + work + " to worker " + worker);
 			return server.sendWork(work);
 		} finally {
 			returnFreeWorker(worker);
