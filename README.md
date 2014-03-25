@@ -1,12 +1,14 @@
-
 CS 262 Group 4 Coding 2 Assignment
-Lucas Waye, Christopher Mueller, George Wu, Kat Zhou
+==================================
 
-Servers
--------
+Authors: Lucas Waye, Christopher Mueller, George Wu, Kat Zhou
+
+Node Types
+----------
 
 There are two types of servers, a WorkerServer and a WorkQueueServer. The WorkerServer 
-performs tasks and the WorkQueueServer delegates tasks to WorkerServers.
+performs tasks and the WorkQueueServer delegates tasks to WorkerServers. There is one
+type of client, WorkClient, that performs AdditionTasks.
 
 A WorkQueueServer accepts tasks to perform and delegates them to registered
 ComputeServer nodes. The WorkQueueServer keeps track of currently active
@@ -34,8 +36,8 @@ Usage
  3. Start the codebase webserver; it runs on port 8000: `./runwebserver.sh &`
  4. Start the RMI registry with the codebase server: `./runregistry.sh &` 
  5. Start the Queued compute server: `./runqueue.sh`
- 6. In a separate window, start a worker: `./runworker.sh`
- 7. In a separate window, start the client: `./runclient.sh localhost`
+ 6. In a separate window, start a worker: `./runworker.sh localhost` (if registering to a remote Queue server, change `localhost` to the hostname of the remote Queue server)
+ 7. In a separate window, start the client: `./runclient.sh localhost` (if connecting to a remote compute server, change `localhost` to the hostname of the remote server)
 
 
 **Note:** For the RMI codebases, don't forget the trailing slash if it is not a JAR.
