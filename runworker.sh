@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ $# -lt 1 ]; then
-    echo "usage: runclient.sh [queueHostname]"
+    echo "usage: runworker.sh [queueHostname]"
     exit
 fi
 
